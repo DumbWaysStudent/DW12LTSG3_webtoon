@@ -1,8 +1,13 @@
 import React from 'react';
-import {StyleSheet, Image, FlatList, View} from 'react-native'
+import {StyleSheet, Image, FlatList, View, TouchableOpacity } from 'react-native'
 import {Container, Text, Input, Icon, Item, Button, Card, CardItem, Left, Right, Thumbnail} from 'native-base';
 import Slideshow from 'react-native-slideshow';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView,} from 'react-native-gesture-handler';
+import {createStackNavigator} from 'react-navigation-stack'
+
+
+import DetailScreen from './Detail';
+import { createAppContainer } from 'react-navigation';
 
 const data = [{
     id: 1,
@@ -17,7 +22,7 @@ const data = [{
     title: 'Young Mom',
     url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
 }]
-export default class Home extends React.Component{
+class Home extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -83,12 +88,16 @@ export default class Home extends React.Component{
                             data={data}
                             renderItem={this.renderItemData}
                             keyExtractor={this._keyExtractor}
-                            
                         />
                     </View>
                     <Text style={style.title}>All</Text>
                     {data.map((item, index)=>{
                         return(
+                        <TouchableOpacity onPress={()=>{this.props.navigation.navigate('Detail', {
+                            id: item.id,
+                            title: item.title,
+                            url: item.url
+                        })}}>
                             <Card key={item.id} style={style.listAll} transparent>
                                 <CardItem>
                                     <Left style={{marginRight: 0, paddingRight:0}}>
@@ -104,7 +113,7 @@ export default class Home extends React.Component{
                                     </Right>
                                 </CardItem>
                             </Card>
-                            
+                        </TouchableOpacity>
                         )
                     })}
                 </ScrollView>
@@ -112,6 +121,25 @@ export default class Home extends React.Component{
         )
     }
 }
+const DetailStack = createStackNavigator({
+    Detail: {
+      screen: DetailScreen,
+      navigationOptions:{
+          header: null
+      }
+    },
+    Home: {
+      screen: Home,
+      navigationOptions:{
+        header: null
+    }
+    }
+  },
+  {
+    initialRouteName: 'Home'
+  })
+const AppDetailStack = createAppContainer(DetailStack);
+export default AppDetailStack
 const style = StyleSheet.create({
     search: {
         fontFamily: 'Roboto',

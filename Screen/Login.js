@@ -52,7 +52,7 @@ export default class LoginScreen extends React.Component {
           if(reg.test(this.state.email) == true){
             this.setState({email: this.state.email})
             this.setState({pass: this.state.pass})
-            this.props.navigation.navigate('Home');
+            this.props.navigation.navigate('App');
           }else{
             ToastAndroid.show('Only Email Input', ToastAndroid.SHORT);
           }

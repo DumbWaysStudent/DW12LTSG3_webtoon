@@ -1,30 +1,74 @@
 import React from 'react';
-import { StatusBar} from 'react-native';
+import {Icon, Button} from 'native-base'
 import { createAppContainer, createSwitchNavigator} from 'react-navigation';
+import {createBottomTabNavigator} from 'react-navigation-tabs';
+import {createStackNavigator} from 'react-navigation-stack';
 
 //Screen
-import HomeScreen from './Screen/index'
 import LoginScreen from './Screen/Login'
 
-const headerStyle = {
-  marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
-};
+//Screen Home Private
+import HomeScreen from './Screen/Home'
+import FavoriteScreen from './Screen/Favorite'
+import ProfileScreen from './Screen/Profile'
 
-const RootStack = createSwitchNavigator(
-  {
-    Login: {
-      screen: LoginScreen
+
+const HomeTabNavigator = createBottomTabNavigator({
+  Home: {
+      screen: HomeScreen,
+      navigationOptions: {
+        tabBarOptions: {
+            activeTintColor: 'orange',
+            labelStyle: {
+                fontSize: 14,
+            },
+          },
+        tabBarLabel: 'For you',
+        tabBarIcon:({tintColor}) => (
+          <Icon name="appstore1" size={40} style={{color : tintColor}} type='AntDesign'/>
+        )
+      },
+  },
+  Favorite: {
+    screen: FavoriteScreen,
+    navigationOptions: {
+      tabBarOptions: {
+        activeTintColor: 'orange',
+        labelStyle: {
+        fontSize: 14,
+        },
+      },
+      tabBarLabel: 'Favorite',
+      tabBarIcon: ({tintColor}) => (
+        <Icon name="star" size={40} style={{color : tintColor}} type='AntDesign' />
+      )
     },
-    Home: {
-      screen: HomeScreen
+  },
+  Profile: {
+    screen: ProfileScreen,
+    navigationOptions: {
+    tabBarOptions: {
+        activeTintColor: 'orange',
+        labelStyle: {
+        fontSize: 14,
+        },
+      },
+      tabBarLabel: 'Profile',
+      tabBarIcon:({tintColor}) => (
+        <Icon name="user" size={40}  style={{color : tintColor}} type='AntDesign'/>
+      )
     }
   },
-  {
-    initialRouteName: 'Login'
-  }
-);
+});
 
-const AppContainer = createAppContainer(RootStack);
+const PublicScreen = createSwitchNavigator({
+  Auth: LoginScreen,
+  App: HomeTabNavigator,
+})
+
+
+
+const AppContainer = createAppContainer(PublicScreen);
 
 export default class App extends React.Component {
   render() {
