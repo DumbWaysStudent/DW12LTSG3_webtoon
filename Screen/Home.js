@@ -48,7 +48,7 @@ export default class Home extends React.Component{
        return(
             <Container>
                 <ScrollView>
-                <Item style={style.itemSearch}>
+                    <Item style={style.itemSearch}>
                         <Input 
                         style={style.search}
                         />

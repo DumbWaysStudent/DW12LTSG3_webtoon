@@ -1,6 +1,6 @@
 import React from 'react';
-import {StyleSheet, Image, View, TouchableOpacity,FlatList,} from 'react-native'
-import {Container, Button, Icon, Header, Left, Right, Body,Item, Title, Text, CardItem} from 'native-base'
+import {StyleSheet, Image, View, TouchableOpacity,FlatList,Share,} from 'react-native'
+import {Container, Button, Icon, Header, Left, Right, Body,  Title, Text, CardItem} from 'native-base'
 
 const data = [{
     id: 0,
@@ -18,6 +18,14 @@ const data = [{
     date: '04-12-2000',
     url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
 }]
+
+const Options = {
+    title: '',
+    message: '',
+    url: '',
+    subject: ''
+}
+
 export default class DetailScreen extends React.Component{
     render(){
         const { state, navigate } = this.props.navigation;
@@ -33,8 +41,8 @@ export default class DetailScreen extends React.Component{
                         <Title style={{color: 'black'}}>{state.params.title}</Title>
                     </Body>
                     <Right>
-                        <Button transparent>
-                        <Icon name='share-alt' style={{color: 'black'}} type='FontAwesome'/>
+                        <Button transparent onPress={()=> this.ShareFunc()}>
+                            <Icon name='share-alt' style={{color: 'black'}} type='FontAwesome'/>
                         </Button>
                     </Right>
                     </Header>
@@ -62,6 +70,9 @@ export default class DetailScreen extends React.Component{
                     </Container>
             </Container>
         )
+    }
+    ShareFunc(){
+        Share.share(Options);
     }
 }
 
