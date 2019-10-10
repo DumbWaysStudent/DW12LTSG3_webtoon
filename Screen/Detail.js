@@ -1,35 +1,24 @@
 import React from 'react';
-import {StyleSheet, Image, View} from 'react-native'
-import {Container, Button, Icon, Header, Left, Right, Body,Item, Title, Text} from 'native-base'
-import { FlatList } from 'react-native-gesture-handler';
+import {StyleSheet, Image, View, TouchableOpacity,FlatList,} from 'react-native'
+import {Container, Button, Icon, Header, Left, Right, Body,Item, Title, Text, CardItem} from 'native-base'
 
 const data = [{
-    id: 1,
+    id: 0,
     title: 'Episode 1',
     date: '19-09-2010',
     url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
   }, {
-    id: 2,
+    id: 1,
     title: 'Episode 2',
     date: '09-11-2022',
     url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
   }, {
-    id: 3,
+    id: 2,
     title: 'Episode 3',
     date: '04-12-2000',
     url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
 }]
-
 export default class DetailScreen extends React.Component{
-    renderItemEpisode({item, index}){
-        return(
-            <Item style={{borderBottomWidth:0}}>
-                <Image source={{uri:item.url}} style={style.ImageFlatListDetail}/>
-                <Text style={{alignSelf: 'flex-start', fontSize: 22,fontWeight: 'bold', paddingLeft: 10, paddingTop: 10}}>{item.title}</Text>
-                <Text style={{position: 'absolute', marginLeft: 112, fontSize: 15}}>{item.date}</Text>
-            </Item>
-        )
-    } 
     render(){
         const { state, navigate } = this.props.navigation;
         return(
@@ -56,7 +45,19 @@ export default class DetailScreen extends React.Component{
                     <Container style={style.ContainerFlatList}>
                         <FlatList
                         data={data}
-                        renderItem={this.renderItemEpisode}
+                        renderItem={({item,index})=>(
+                        <TouchableOpacity key={index} onPress={()=>this.props.navigation.navigate('Episode',{
+                            id: item.id,
+                            title: item.title,
+                            url: item.url
+                        })}>
+                            <CardItem>
+                                    <Image source={{uri:item.url}} style={style.ImageFlatListDetail}/>
+                                    <Text style= {{fontFamily: 'Roboto',alignSelf: 'flex-start',paddingTop: 20, fontWeight: 'bold',fontSize: 22, paddingLeft: 10}}>{item.title}</Text>
+                                    <Text style= {{fontFamily: 'Roboto',alignSelf: 'center', position: 'absolute', fontSize: 14, marginLeft: 130}}>{item.date}</Text>
+                            </CardItem>
+                        </TouchableOpacity>
+                        )}
                         />
                     </Container>
             </Container>

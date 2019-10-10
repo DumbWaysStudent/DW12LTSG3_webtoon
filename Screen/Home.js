@@ -1,13 +1,9 @@
 import React from 'react';
 import {StyleSheet, Image, FlatList, View, TouchableOpacity } from 'react-native'
-import {Container, Text, Input, Icon, Item, Button, Card, CardItem, Left, Right, Thumbnail} from 'native-base';
+import {Container, Text, Input, Icon, Item, Button, Card, CardItem, Left, Right} from 'native-base';
 import Slideshow from 'react-native-slideshow';
-import { ScrollView,} from 'react-native-gesture-handler';
-import {createStackNavigator} from 'react-navigation-stack'
+import { ScrollView} from 'react-native-gesture-handler';
 
-
-import DetailScreen from './Detail';
-import { createAppContainer } from 'react-navigation';
 
 const data = [{
     id: 1,
@@ -22,7 +18,7 @@ const data = [{
     title: 'Young Mom',
     url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
 }]
-class Home extends React.Component{
+export default class Home extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -46,14 +42,6 @@ class Home extends React.Component{
     _keyExtractor({item, index}){
         return(
             index
-        )
-    }
-    renderItemData({item, index}){
-        return(
-            <View key={index} style={style.favorite}>
-                <Image source={{uri: item.url}} style={style.imageFlatList}/>
-                <Text style={style.titleFlatList}>{item.title}</Text>
-            </View>
         )
     }
     render(){
@@ -86,7 +74,18 @@ class Home extends React.Component{
                             scrollEnabled={true}
                             horizontal={true}
                             data={data}
-                            renderItem={this.renderItemData}
+                            renderItem={({item,index})=>(
+                                <TouchableOpacity onPress={()=> this.props.navigation.navigate('Detail', {
+                                    id: item.id,
+                                    title: item.title,
+                                    url: item.url
+                                })}>
+                                    <View key={index} style={style.favorite}>
+                                        <Image source={{uri: item.url}} style={style.imageFlatList}/>
+                                        <Text style={style.titleFlatList}>{item.title}</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            )}
                             keyExtractor={this._keyExtractor}
                         />
                     </View>
@@ -121,25 +120,7 @@ class Home extends React.Component{
         )
     }
 }
-const DetailStack = createStackNavigator({
-    Detail: {
-      screen: DetailScreen,
-      navigationOptions:{
-          header: null
-      }
-    },
-    Home: {
-      screen: Home,
-      navigationOptions:{
-        header: null
-    }
-    }
-  },
-  {
-    initialRouteName: 'Home'
-  })
-const AppDetailStack = createAppContainer(DetailStack);
-export default AppDetailStack
+
 const style = StyleSheet.create({
     search: {
         fontFamily: 'Roboto',

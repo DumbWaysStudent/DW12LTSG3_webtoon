@@ -12,6 +12,9 @@ import HomeScreen from './Screen/Home'
 import FavoriteScreen from './Screen/Favorite'
 import ProfileScreen from './Screen/Profile'
 
+//Screen Home Private Screen
+import DetailScreen from './Screen/Detail'
+import EpisodeScreen from './Screen/Episode'
 
 const HomeTabNavigator = createBottomTabNavigator({
   Home: {
@@ -60,10 +63,32 @@ const HomeTabNavigator = createBottomTabNavigator({
     }
   },
 });
-
+const PrivateScreen = createStackNavigator({
+  Episode:{
+      screen: EpisodeScreen,
+      navigationOptions: {
+        header: null
+      }
+  },
+  Detail: {
+    screen: DetailScreen,
+    navigationOptions:{
+        header: null
+    }
+  },
+  Home: {
+    screen: HomeTabNavigator,
+    navigationOptions:{
+      header: null
+  }
+  },
+},
+{
+  initialRouteName: 'Home'
+})
 const PublicScreen = createSwitchNavigator({
   Auth: LoginScreen,
-  App: HomeTabNavigator,
+  App: PrivateScreen,
 })
 
 
