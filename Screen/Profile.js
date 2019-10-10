@@ -41,7 +41,12 @@ export default class ProfileScreen extends React.Component {
             <Text style={style.textUser}>User Profile</Text>
           }
           </View>
-          <Button warning iconRight full style={style.button}>
+          <Button
+          warning
+          iconRight
+          full
+          onPress={()=>this.props.navigation.navigate('MyWebtoon')}
+          style={style.button}>
               <Left style={{paddingLeft: 10}}>
                 <Text style={{color: 'white'}}>My Webtoon Creaton</Text>
               </Left>
@@ -49,7 +54,10 @@ export default class ProfileScreen extends React.Component {
                 <Icon style={{color: 'white'}} name='ios-arrow-forward' />
               </Right>
           </Button>
-          <Button warning full style={style.button}>
+          <Button
+          warning
+          full
+          style={style.button}>
               <Left  style={{paddingLeft: 10}}>
                 <Text style={{color: 'white'}}>Log Out</Text>
               </Left>
