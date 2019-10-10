@@ -18,6 +18,7 @@ import EpisodeScreen from './Screen/Episode'
 import EditProfileScreen from './Screen/EditProfile'
 import MyWebtoonScreen from './Screen/MyWebtoon'
 import CreateWebtoonScreen from './Screen/CreateWebtoon'
+import CreateEpisodeScreen from './Screen/CreateEpisode'
 
 const HomeTabNavigator = createBottomTabNavigator({
   Home: {
@@ -81,6 +82,12 @@ const PrivateScreen = createStackNavigator({
   },
   CreateWebtoon:{
     screen: CreateWebtoonScreen,
+    navigationOptions:{
+      header: null
+    }
+  },
+  CreateEpisode:{
+    screen: CreateEpisodeScreen,
     navigationOptions:{
       header: null
     }

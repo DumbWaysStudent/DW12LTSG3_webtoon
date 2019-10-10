@@ -75,12 +75,12 @@ export default class Home extends React.Component{
                             horizontal={true}
                             data={data}
                             renderItem={({item,index})=>(
-                                <TouchableOpacity onPress={()=> this.props.navigation.navigate('Detail', {
+                                <TouchableOpacity key={index} onPress={()=> this.props.navigation.navigate('Detail', {
                                     id: item.id,
                                     title: item.title,
                                     url: item.url
                                 })}>
-                                    <View key={index} style={style.favorite}>
+                                    <View style={style.favorite}>
                                         <Image source={{uri: item.url}} style={style.imageFlatList}/>
                                         <Text style={style.titleFlatList}>{item.title}</Text>
                                     </View>
@@ -97,15 +97,14 @@ export default class Home extends React.Component{
                             title: item.title,
                             url: item.url
                         })}}>
-                            <Card key={item.id} style={style.listAll} transparent>
+                            <Card key={index} style={style.listAll} transparent>
                                 <CardItem>
                                     <Left style={{marginRight: 0, paddingRight:0}}>
                                         <Image source={{uri: item.url}} style={style.imageAll}/>
                                         <Text style={style.titleListAll}>{item.title}</Text>
-                                        
                                     </Left>
                                     <Right style={{marginLeft: 140,paddingTop: 30,alignItems: 'flex-start', position: 'absolute'}}>
-                                        <Button warning>
+                                        <Button warning onPress={()=>this.props.navigation.navigate('Favorite')}>
                                             <Icon name='plus' type='AntDesign' style={{marginRight: 0,}}/>
                                             <Text>Favorite</Text>
                                         </Button>

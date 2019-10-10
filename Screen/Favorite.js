@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, FlatList, Image} from 'react-native';
+import {StyleSheet, FlatList, Image, TouchableOpacity} from 'react-native';
 import {Container, Text, Item, Input, Button, Icon, CardItem} from 'native-base';
 
 const data = [{
@@ -45,11 +45,18 @@ export default class FavoriteScreen extends React.Component {
             <FlatList
             data={this.dataSearch()}
             renderItem={({item, index})=>(
+            <TouchableOpacity key={index} onPress={()=> this.props.navigation.navigate('Detail',{
+                id:index,
+                title:item.title,
+                url: item.url
+            })}>
                 <CardItem>
                     <Image source={{uri:item.url}} style={style.ImageFlatListDetail}/>
                         <Text style= {{fontFamily: 'Roboto',alignSelf: 'flex-start',paddingTop: 20, fontWeight: 'bold',fontSize: 22, paddingLeft: 10}}>{item.title}</Text>
                     <Text style= {{fontFamily: 'Roboto',alignSelf: 'center', position: 'absolute', fontSize: 16, marginLeft: 130}}>{item.favorite} Favorite</Text>
                 </CardItem>
+            </TouchableOpacity>
+                
             )}
             />
         </Container>

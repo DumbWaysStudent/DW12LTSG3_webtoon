@@ -44,13 +44,13 @@ export default class CreateWebtoonScreen extends React.Component{
                         <Title style={{color: 'black'}}>Create Webtoon</Title>
                     </Body>
                     <Right>
-                    <Button transparent >
+                    <Button transparent onPress={()=>this.props.navigation.navigate('MyWebtoon')}>
                             <Icon style={{color: 'orange'}} name='check' type='FontAwesome'/>
                         </Button>
                     </Right>
                 </Header>
                 <Item stackedLabel style={style.ItemInput}>
-                    <Label style={style.Label}>Title</Label>
+                    <Label style={style.Label}>Name</Label>
                     <Input 
                     style={style.Input}
                     onChangeText={(text)=> this.setState({text: text})}
@@ -72,7 +72,7 @@ export default class CreateWebtoonScreen extends React.Component{
                 <Button
                 full 
                 warning
-                onPress={()=>this.props.navigation.navigate('CreateEpsiode')}>
+                onPress={()=>{this.props.navigation.navigate('CreateEpisode')}}>
                     <Icon name='plus' type='Entypo'/>
                     <Text style={{paddingLeft: 0}}>Add Episode</Text>
                 </Button>

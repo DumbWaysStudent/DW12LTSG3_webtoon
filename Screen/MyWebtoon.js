@@ -43,7 +43,11 @@ export default class MyWebtoonScreen extends React.Component{
                 <FlatList
                 data={data}
                 renderItem={({item,index})=>(
-                <TouchableOpacity key={item.id}>
+                <TouchableOpacity key={item.id} onPress={()=>this.props.navigation.navigate('Detail',{
+                    id: item.id,
+                    title: item.title,
+                    url: item.url
+                })}>
                     <CardItem>
                         <Image source={{uri:item.url}} style={style.ImageFlatListDetail}/>
                             <Text style= {style.title}>{item.title}</Text>
