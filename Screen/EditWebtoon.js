@@ -7,23 +7,8 @@ import { FlatList } from 'react-native-gesture-handler';
 export default class CreateWebtoonScreen extends React.Component{
     constructor(){
         super();
-        this.state = {data : [{
-            id: 0,
-            title: 'Episode 1',
-            date: '19-09-2010',
-            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
-          }, {
-            id: 1,
-            title: 'Episode 2',
-            date: '09-11-2022',
-            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
-          }, {
-            id: 2,
-            title: 'Episode 3',
-            date: '04-12-2000',
-            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
-        }],
-        text: ''
+        this.state = {
+            text: ''
         }
     }
     render(){
@@ -41,7 +26,7 @@ export default class CreateWebtoonScreen extends React.Component{
                         </Button>
                     </Left>
                     <Body>
-                        <Title style={{color: 'black'}}>Create Webtoon</Title>
+                        <Title style={{color: 'black'}}>Edit Webtoon</Title>
                     </Body>
                     <Right>
                     <Button transparent onPress={()=>this.props.navigation.navigate('MyWebtoon')}>
@@ -53,15 +38,16 @@ export default class CreateWebtoonScreen extends React.Component{
                     <Label style={style.Label}>Name</Label>
                     <Input 
                     style={style.Input}
+                    value={this.props.navigation.getParam('title')}
                     onChangeText={(text)=> this.setState({text: text})}
                     />
                 </Item>
                 <View>
                     <Text style={style.Episode}>Episode</Text>
                     <FlatList
-                    data={this.state.data}
+                    data={this.props.navigation.getParam('image')}
                     renderItem={({item, index})=>(
-                        <CardItem>
+                        <CardItem key={index}>
                             <Image source={{uri:item.url}} style={style.ImageFlatListDetail}/>
                             <Text style= {{fontFamily: 'Roboto',alignSelf: 'flex-start',paddingTop: 20, fontWeight: 'bold',fontSize: 22, paddingLeft: 10}}>{item.title}</Text>
                                     <Text style= {{fontFamily: 'Roboto',alignSelf: 'center', position: 'absolute', fontSize: 14, marginLeft: 130}}>{item.date}</Text>
@@ -72,9 +58,17 @@ export default class CreateWebtoonScreen extends React.Component{
                 <Button
                 full 
                 warning
-                onPress={()=>{this.props.navigation.navigate('CreateEpisode',)}}>
+                onPress={()=>{this.props.navigation.navigate('CreateEpisode',{
+                    imageEpisode: this.props.navigation.getParam('imageEpisode')
+                })}}>
                     <Icon name='plus' type='Entypo'/>
                     <Text style={{paddingLeft: 0}}>Add Episode</Text>
+                </Button>
+                <Button
+                style={{paddingLeft:20}}
+                full 
+                danger>
+                    <Text style={{paddingLeft: 0}}>Delete Webtoon</Text>
                 </Button>
             </Container>
         )

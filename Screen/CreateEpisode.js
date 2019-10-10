@@ -5,22 +5,6 @@ import { FlatList } from 'react-native-gesture-handler';
 import ImagePicker from 'react-native-image-picker';
 
 export default class CreateEpisode extends React.Component{
-    constructor(){
-        super();
-        this.state = {
-            data :[
-            {
-                name: 'cover.jpg',
-                url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
-            },
-            {
-                name: 'intro.jpg',
-                url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
-            },
-        ],
-            text: ''
-        }
-    }
     render(){
         return(
             <Container>
@@ -58,11 +42,11 @@ export default class CreateEpisode extends React.Component{
                             style={{height: 500}}
                             keyExtractor={({item,index})=> index}
                             scrollEnabled={true}
-                            data={this.state.data}
+                            data={this.props.navigation.getParam('imageEpisode')}
                             renderItem={({item, index})=>(
                                 <CardItem key={index}>
                                     <Image source={{uri: item.url}} style={style.ImageFlatListDetail}/>
-                                    <Text style= {{fontFamily: 'Roboto',alignSelf: 'flex-start', fontWeight: 'bold',fontSize: 22, paddingLeft: 10}}>{item.name}</Text>
+                                    <Text style= {{fontFamily: 'Roboto',alignSelf: 'flex-start', fontWeight: 'bold',fontSize: 22, paddingLeft: 10}}>{item.title}</Text>
                                             <Button full danger 
                                             onPress={()=> this.delImage(index)}
                                             style= {{fontFamily: 'Roboto', position: 'absolute', fontSize: 14, marginLeft: 130,alignItems:'flex-start',paddingTop: 15, marginTop: 65}}>

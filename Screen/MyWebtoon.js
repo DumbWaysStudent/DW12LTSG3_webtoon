@@ -7,17 +7,165 @@ const data = [{
     id: 1,
     title: 'The Secret of Angel',
     episode: 40,
-    url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+    url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+    image: [{
+        id: 0,
+        title: 'Episode 1',
+        date: '19-09-2010',
+        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+        image:[{
+            title: 'Cover',
+            date: '19-09-2010',
+            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+        },
+        {
+            title: 'Intro',
+            date: '19-09-2010',
+            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+        },
+        ]
+      }, {
+        id: 1,
+        title: 'Episode 2',
+        date: '09-11-2022',
+        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+        image:[{
+            title: 'Cover',
+            date: '19-09-2010',
+            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+        },
+        {
+            title: 'Intro',
+            date: '19-09-2010',
+            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+        },
+        ]
+      
+    }, {
+        id: 2,
+        title: 'Episode 3',
+        date: '04-12-2000',
+        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+        image:[{
+            title: 'Cover',
+            date: '19-09-2010',
+            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+        },
+        {
+            title: 'Intro',
+            date: '19-09-2010',
+            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+        },
+        ]
+    }]
   }, {
     id: 2,
     title: 'Pasutri Gaje',
     episode: 50,
-    url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+    url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+    image: [{
+        id: 0,
+        title: 'Episode 1',
+        date: '19-09-2010',
+        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+        image:[{
+            title: 'Cover',
+            date: '19-09-2010',
+            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+        },
+        {
+            title: 'Intro',
+            date: '19-09-2010',
+            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+        },
+        ]
+      }, {
+        id: 1,
+        title: 'Episode 2',
+        date: '09-11-2022',
+        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+        image:[{
+            title: 'Cover',
+            date: '19-09-2010',
+            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+        },
+        {
+            title: 'Intro',
+            date: '19-09-2010',
+            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+        },
+        ]
+      }, {
+        id: 2,
+        title: 'Episode 3',
+        date: '04-12-2000',
+        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+        image:[{
+            title: 'Cover',
+            date: '19-09-2010',
+            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+        },
+        {
+            title: 'Intro',
+            date: '19-09-2010',
+            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+        },
+        ]
+    }]
   }, {
     id: 3,
     title: 'Young Mom',
     episode: 60,
-    url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+    url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+    image: [{
+        id: 0,
+        title: 'Episode 1',
+        date: '19-09-2010',
+        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+        image:[{
+            title: 'Cover',
+            date: '19-09-2010',
+            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+        },
+        {
+            title: 'Intro',
+            date: '19-09-2010',
+            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+        },
+        ]  
+    }, {
+        id: 1,
+        title: 'Episode 2',
+        date: '09-11-2022',
+        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+        image:[{
+            title: 'Cover',
+            date: '19-09-2010',
+            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+        },
+        {
+            title: 'Intro',
+            date: '19-09-2010',
+            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+        },
+        ]
+    }, {
+        id: 2,
+        title: 'Episode 3',
+        date: '04-12-2000',
+        url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+        image:[{
+            title: 'Cover',
+            date: '19-09-2010',
+            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+        },
+        {
+            title: 'Intro',
+            date: '19-09-2010',
+            url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
+        },
+        ]
+    }]
 }]
 
 export default class MyWebtoonScreen extends React.Component{
@@ -43,10 +191,12 @@ export default class MyWebtoonScreen extends React.Component{
                 <FlatList
                 data={data}
                 renderItem={({item,index})=>(
-                <TouchableOpacity key={item.id} onPress={()=>this.props.navigation.navigate('Detail',{
-                    id: item.id,
+                <TouchableOpacity key={item.id} onPress={()=> this.props.navigation.navigate('EditMyWebtoon',{
+                    id: index,
                     title: item.title,
-                    url: item.url
+                    url: item.url,
+                    image: item.image,
+                    imageEpisode: item.image[index].image
                 })}>
                     <CardItem>
                         <Image source={{uri:item.url}} style={style.ImageFlatListDetail}/>
