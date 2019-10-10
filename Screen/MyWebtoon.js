@@ -55,6 +55,7 @@ export default class MyWebtoonScreen extends React.Component{
                 />
                 <View style={style.button}>
                     <Button
+                    onPress={()=> this.props.navigation.navigate('CreateWebtoon')}
                     rounded
                     warning
                     style={{height: 55}}>
