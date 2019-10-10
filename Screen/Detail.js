@@ -54,7 +54,7 @@ export default class DetailScreen extends React.Component{
                         <FlatList
                         data={data}
                         renderItem={({item,index})=>(
-                        <TouchableOpacity key={index} onPress={()=>this.props.navigation.navigate('Episode',{
+                        <TouchableOpacity key={item.id} onPress={()=>this.props.navigation.navigate('Episode',{
                             id: item.id,
                             title: item.title,
                             url: item.url

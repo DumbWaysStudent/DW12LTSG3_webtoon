@@ -15,6 +15,7 @@ import ProfileScreen from './Screen/Profile'
 //Screen Home Private Screen
 import DetailScreen from './Screen/Detail'
 import EpisodeScreen from './Screen/Episode'
+import EditProfileScreen from './Screen/EditProfile'
 
 const HomeTabNavigator = createBottomTabNavigator({
   Home: {
@@ -74,6 +75,12 @@ const PrivateScreen = createStackNavigator({
     screen: DetailScreen,
     navigationOptions:{
         header: null
+    }
+  },
+  EditProfile:{
+    screen: EditProfileScreen,
+    navigationOptions: {
+      header: null
     }
   },
   Home: {

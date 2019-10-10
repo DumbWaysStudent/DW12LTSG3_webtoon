@@ -58,7 +58,7 @@ export default class EpisodeScreen extends React.Component{
                     
                 {data[state.params.id].image.map((item, index)=>{
                     return(
-                        <Image source={{uri : item}} style={style.imageEpisode}/>
+                        <Image key={item.id} source={{uri : item}} style={style.imageEpisode}/>
                     )
                 })}
                 </ScrollView>
