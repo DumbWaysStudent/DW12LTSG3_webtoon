@@ -39,11 +39,6 @@ export default class Home extends React.Component{
     UNSAFE_componentWillMount(){
         clearInterval(this.state.interval)
     } 
-    _keyExtractor({item, index}){
-        return(
-            index
-        )
-    }
     render(){
        return(
             <Container>
@@ -75,7 +70,7 @@ export default class Home extends React.Component{
                             horizontal={true}
                             data={data}
                             renderItem={({item,index})=>(
-                                <TouchableOpacity key={index} onPress={()=> this.props.navigation.navigate('Detail', {
+                                <TouchableOpacity key={item.id} onPress={()=> this.props.navigation.navigate('Detail', {
                                     id: item.id,
                                     title: item.title,
                                     url: item.url
@@ -86,18 +81,18 @@ export default class Home extends React.Component{
                                     </View>
                                 </TouchableOpacity>
                             )}
-                            keyExtractor={this._keyExtractor}
+                            keyExtractor={(item, index) => index.toString()}
                         />
                     </View>
                     <Text style={style.title}>All</Text>
                     {data.map((item, index)=>{
                         return(
-                        <TouchableOpacity onPress={()=>{this.props.navigation.navigate('Detail', {
+                        <TouchableOpacity key={item.id} onPress={()=>{this.props.navigation.navigate('Detail', {
                             id: item.id,
                             title: item.title,
                             url: item.url
                         })}}>
-                            <Card key={index} style={style.listAll} transparent>
+                            <Card style={style.listAll} transparent>
                                 <CardItem>
                                     <Left style={{marginRight: 0, paddingRight:0}}>
                                         <Image source={{uri: item.url}} style={style.imageAll}/>

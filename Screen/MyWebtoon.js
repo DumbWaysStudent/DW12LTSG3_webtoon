@@ -3,7 +3,7 @@ import {StyleSheet, Image, View,TouchableOpacity } from 'react-native'
 import {Container, Text, Header, Left, Body, Right, Title, Button, Icon, CardItem} from 'native-base'
 import { FlatList, } from 'react-native-gesture-handler'
 
-const data = [{
+data = [{
     id: 1,
     title: 'The Secret of Angel',
     episode: 40,
@@ -189,6 +189,7 @@ export default class MyWebtoonScreen extends React.Component{
                     <Right></Right>
                 </Header>
                 <FlatList
+                keyExtractor={(item, index)=> index.toString()}
                 data={data}
                 renderItem={({item,index})=>(
                 <TouchableOpacity key={item.id} onPress={()=> this.props.navigation.navigate('EditMyWebtoon',{

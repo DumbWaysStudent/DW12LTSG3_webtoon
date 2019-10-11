@@ -43,9 +43,10 @@ export default class FavoriteScreen extends React.Component {
                 </Button>
             </Item>
             <FlatList
+            keyExtractor={(item,index)=>index.toString()}
             data={this.dataSearch()}
             renderItem={({item, index})=>(
-            <TouchableOpacity key={index} onPress={()=> this.props.navigation.navigate('Detail',{
+            <TouchableOpacity key={item.id} onPress={()=> this.props.navigation.navigate('Detail',{
                 id:index,
                 title:item.title,
                 url: item.url

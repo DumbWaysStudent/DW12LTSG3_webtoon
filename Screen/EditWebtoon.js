@@ -1,15 +1,21 @@
 import React from 'react';
-import {StyleSheet, View, Image} from 'react-native';
+import {StyleSheet, View, Image,TouchableOpacity} from 'react-native';
 import {Container, Text, Header, Left, Body, Right, Button, Icon, Title, Item, Input, Label,CardItem} from 'native-base';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList,  } from 'react-native-gesture-handler';
 
 
 export default class CreateWebtoonScreen extends React.Component{
     constructor(){
         super();
         this.state = {
+            data: '',
             text: ''
         }
+    }
+    componentDidMount(){
+        this.setState({
+            data : this.props.navigation.getParam('image')
+        })
     }
     render(){
         return(
@@ -45,17 +51,26 @@ export default class CreateWebtoonScreen extends React.Component{
                 <View>
                     <Text style={style.Episode}>Episode</Text>
                     <FlatList
-                    data={this.props.navigation.getParam('image')}
+                    keyExtractor={(item,index)=> index.toString()}
+                    data={this.state.data}
                     renderItem={({item, index})=>(
-                        <CardItem key={index}>
-                            <Image source={{uri:item.url}} style={style.ImageFlatListDetail}/>
+                    <TouchableOpacity key={item.id} onPress={()=> this.props.navigation.navigate('EditEpisode',{
+                        id:index,
+                        title:item.title,
+                        image: item.image,
+                        navigation: true
+                    })}>
+                        <CardItem>
+                            <Image source={{uri: item.url}} style={style.ImageFlatListDetail}/>
                             <Text style= {{fontFamily: 'Roboto',alignSelf: 'flex-start',paddingTop: 20, fontWeight: 'bold',fontSize: 22, paddingLeft: 10}}>{item.title}</Text>
                                     <Text style= {{fontFamily: 'Roboto',alignSelf: 'center', position: 'absolute', fontSize: 14, marginLeft: 130}}>{item.date}</Text>
                         </CardItem>
+                    </TouchableOpacity>
                     )}
                     />
                 </View>
                 <Button
+                style={style.button}
                 full 
                 warning
                 onPress={()=>{this.props.navigation.navigate('CreateEpisode',{
@@ -65,6 +80,7 @@ export default class CreateWebtoonScreen extends React.Component{
                     <Text style={{paddingLeft: 0}}>Add Episode</Text>
                 </Button>
                 <Button
+                style={style.button}
                 style={{paddingLeft:20}}
                 full 
                 danger>
@@ -108,4 +124,9 @@ const style = StyleSheet.create({
         borderColor: 'black',
         marginBottom: 10
     },
+    button: {
+        marginLeft: 20,
+        marginRight: 20,
+        marginBottom: 20
+    }
 })

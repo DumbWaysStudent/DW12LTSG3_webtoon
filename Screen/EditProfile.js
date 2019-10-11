@@ -1,17 +1,23 @@
 import React from 'react'
 import {StyleSheet, View, Image} from 'react-native'
-import {Container, Text, Header, Left, Body, Right, Button, Icon, Title, Input, Item} from 'native-base'
+import {Container,  Header,  Body, Right, Button, Icon, Title, Input, Item} from 'native-base'
 import ImagePicker from 'react-native-image-picker';
 
 
 export default class EditProfileScreen extends React.Component{
-    state = {
-        imageSource : '',
-        name: ''
-    }
     constructor(props) {
         super(props);
         this.selectPhoto = this.selectPhoto.bind(this); 
+        this.state = {
+            imageSource : this.props.navigation.getParam('url'),
+            name: this.props.navigation.getParam('name')
+        }
+    }
+    componentDidMount(){
+        this.setState({
+            imageSource: this.state.imageSource,
+            name: this.state.name
+        })
     }
     selectPhoto(){
         const options = {
@@ -50,15 +56,9 @@ export default class EditProfileScreen extends React.Component{
                     </Right>
                 </Header>
                 <View style={style.userProfile}>
-                    {this.state.imageSource ?
                     <Image
                     source={this.state.imageSource}
                     style={{width: 200, height: 200, borderRadius: 100}}/>
-                    :
-                    <Image
-                    source={{uri: this.props.navigation.getParam('url')}}
-                    style={{width: 200, height: 200, resizeMode: 'stretch'}}/>
-                    }
                     <Button
                     warning 
                     style={style.btncamera}
@@ -70,7 +70,7 @@ export default class EditProfileScreen extends React.Component{
                     <Item>
                         <Input
                         style={style.inputProfile}
-                        defaultValue={this.props.navigation.getParam('name')}
+                        defaultValue={this.state.name}
                         onChangeText={(text) => this.setState({name: text})}
                         />
                     </Item>

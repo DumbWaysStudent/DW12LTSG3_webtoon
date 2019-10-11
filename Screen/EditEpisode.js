@@ -6,20 +6,17 @@ import ImagePicker from 'react-native-image-picker';
 
 export default class CreateEpisode extends React.Component{
     constructor(){
-        super();
+        super()
         this.state = {
-            data : [{
-                title: 'Cover',
-                date: '19-09-2010',
-                url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
-            },
-            {
-                title: 'Intro',
-                date: '19-09-2010',
-                url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
-            },
-            ]
+            data : '',
+            text: '',
+
         }
+    }
+    componentDidMount(){
+        this.setState({
+            data: this.props.navigation.getParam('image')
+        })
     }
     render(){
         return(
@@ -36,11 +33,11 @@ export default class CreateEpisode extends React.Component{
                         </Button>
                     </Left>
                     <Body>
-                        <Title style={{color: 'black'}}>Create Episode</Title>
+                        <Title style={{color: 'black'}}>Edit Episode</Title>
                     </Body>
                     <Right>
                     <Button transparent
-                    onPress={()=> this.AddEpisode()}>
+                    onPress={()=> this.EditEpisode()}>
                             <Icon style={{color: 'orange'}} name='check' type='FontAwesome'/>
                         </Button>
                     </Right>
@@ -48,17 +45,17 @@ export default class CreateEpisode extends React.Component{
                 <Item stackedLabel style={style.ItemInput}>
                     <Label style={style.Label}>Name</Label>
                     <Input 
+                    value={this.props.navigation.getParam('title')}
                     onChangeText={(text)=> this.setState({text: text})}
                     style={style.Input}
                     />
                 </Item>
                 <View>
-                    <Text style={style.Episode}>Episode</Text>
+                    <Text style={style.Episode}>Image</Text>
                         <FlatList
-
-                            style={{height: 500}}
+                            style={{height: 400}}
+                            keyExtractor={(item,index)=> index.toString()}
                             scrollEnabled={true}
-                            keyExtractor={(item,index)=>index.toString()}
                             data={this.state.data}
                             renderItem={({item, index})=>(
                                 <CardItem key={index}>
@@ -78,7 +75,14 @@ export default class CreateEpisode extends React.Component{
                     full 
                     warning>
                         <Icon name='plus' type='Entypo'/>
-                        <Text style={{paddingLeft: 0}}>Add Image</Text>
+                        <Text style={{paddingLeft: 0}}>Image</Text>
+                    </Button>
+                    <Button
+                    style={style.button}
+                    style={style.button}
+                    full 
+                    danger>
+                        <Text style={{paddingLeft: 25}}>Delete Episode</Text>
                     </Button>
                 </View>
                 
@@ -112,23 +116,19 @@ export default class CreateEpisode extends React.Component{
         this.state.data.splice(index, 1);
         this.setState({data : this.state.data})
     }
-    AddEpisode(){
-        var d = new Date().toDateString()
-        this.props.navigation.navigate('CreateWebtoon',{
-            title: this.state.text,
-                date: d,
-                image: [
-                    this.state.data
-                ]
-        })
+    EditEpisode(){
+        if(this.props.navigation.getParam('navigation') == true){
+            this.props.navigation.navigate('EditMyWebtoon',{
+                    image: this.state.data
+            })
+        }else{
+            this.props.navigation.navigate('CreateWebtoon',{
+                image: this.state.data
+            })
+        }
     }
 }
 const style = StyleSheet.create({
-    button: {
-        marginLeft: 20,
-        marginRight: 20,
-        marginBottom: 20
-    },
     header: {
         backgroundColor: 'white',
         color: 'black'
@@ -162,4 +162,9 @@ const style = StyleSheet.create({
         borderColor: 'black',
         marginBottom: 10
     },
+    button: {
+        marginLeft: 20,
+        marginRight: 20,
+        marginBottom: 20
+    }
 })
