@@ -61,7 +61,7 @@ const HomeTabNavigator = createBottomTabNavigator({
         labelStyle: {
         fontSize: 14,
         },
-      },
+    },
       tabBarLabel: 'Profile',
       tabBarIcon:({tintColor}) => (
         <Icon name="user" size={40}  style={{color : tintColor}} type='AntDesign'/>

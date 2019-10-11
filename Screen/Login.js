@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet,ToastAndroid} from 'react-native';
+import { StyleSheet,ToastAndroid, Image} from 'react-native';
 import { Container, Button, Text, Item, Input, Label, Icon} from 'native-base';
 
 export default class LoginScreen extends React.Component {
@@ -15,6 +15,10 @@ export default class LoginScreen extends React.Component {
     render() {
       return (
         <Container style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Image 
+          source={require('./asset/logo.png')}
+          style={{height: 200, width: 200}}
+          />
           <Text style={style.textStyle}>
             LOG IN
           </Text>
