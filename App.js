@@ -5,29 +5,33 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {createStackNavigator} from 'react-navigation-stack';
 
 //Screen
-import LoginScreen from './Screen/Login'
+import LoginScreen from './src/Screen/Login'
 
 //Screen Home Private
-import HomeScreen from './Screen/Home'
-import FavoriteScreen from './Screen/Favorite'
-import ProfileScreen from './Screen/Profile'
+import HomeScreen from './src/Screen/Home'
+import FavoriteScreen from './src/Screen/Favorite'
+import ProfileScreen from './src/Screen/Profile'
 
 //Screen Home Private Screen
-import DetailScreen from './Screen/Detail'
-import EpisodeScreen from './Screen/Episode'
-import EditProfileScreen from './Screen/EditProfile'
-import MyWebtoonScreen from './Screen/MyWebtoon'
-import CreateWebtoonScreen from './Screen/CreateWebtoon'
-import CreateEpisodeScreen from './Screen/CreateEpisode'
-import EditMyWebtoonScreen from './Screen/EditWebtoon'
-import EditEpisodeScreen from './Screen/EditEpisode'
+import DetailScreen from './src/Screen/Detail'
+import EpisodeScreen from './src/Screen/Episode'
+import EditProfileScreen from './src/Screen/EditProfile'
+import MyWebtoonScreen from './src/Screen/MyWebtoon'
+import CreateWebtoonScreen from './src/Screen/CreateWebtoon'
+import CreateEpisodeScreen from './src/Screen/CreateEpisode'
+import EditMyWebtoonScreen from './src/Screen/EditWebtoon'
+import EditEpisodeScreen from './src/Screen/EditEpisode'
+
+//Auth Loading
+import AuthLoadingScreen from './src/Screen/Auth'
+
 
 const HomeTabNavigator = createBottomTabNavigator({
   Home: {
       screen: HomeScreen,
       navigationOptions: {
         tabBarOptions: {
-            activeTintColor: 'orange',
+            activeTintColor: '#2ecc71',
             labelStyle: {
                 fontSize: 14,
             },
@@ -42,7 +46,7 @@ const HomeTabNavigator = createBottomTabNavigator({
     screen: FavoriteScreen,
     navigationOptions: {
       tabBarOptions: {
-        activeTintColor: 'orange',
+        activeTintColor: '#2ecc71',
         labelStyle: {
         fontSize: 14,
         },
@@ -57,7 +61,7 @@ const HomeTabNavigator = createBottomTabNavigator({
     screen: ProfileScreen,
     navigationOptions: {
     tabBarOptions: {
-        activeTintColor: 'orange',
+        activeTintColor: '#2ecc71',
         labelStyle: {
         fontSize: 14,
         },
@@ -131,8 +135,12 @@ const PrivateScreen = createStackNavigator({
 
 
 const PublicScreen = createSwitchNavigator({
+  AuthLoading: AuthLoadingScreen,
   Auth: LoginScreen,
   App: PrivateScreen,
+},
+{
+  initialRouteName: 'AuthLoading'
 })
 
 

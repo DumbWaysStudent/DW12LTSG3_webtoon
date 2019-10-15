@@ -13,18 +13,18 @@ Clone Webtoon is project to Clone Application Webtoon Mobile, that same function
 ## Screenshots
 
 <p float="left">
-  <img src="./screenshoot/Screenshot_20191011-123047.png" width="180" height="350" alt="Login Screen"/>
-  <img src="./screenshoot/Screenshot_20191011-123105.png" width="180" height="350" alt="Home Screen"/>
-  <img src="./screenshoot/Screenshot_20191011-140509.png" width="180" height="350" alt="Detail Screen"/>
-  <img src="./screenshoot/Screenshot_20191011-140516.png" width="180" height="350" alt="Episode Detail Screen"/>
-  <img src="./screenshoot/Screenshot_20191011-123113.png" width="180" height="350" alt="Favorite Screen"/>
-  <img src="./screenshoot/Screenshot_20191011-123120.png" width="180" height="350" alt="Profile Screen"/>
-  <img src="./screenshoot/Screenshot_20191011-140601.png" width="180" height="350" alt="Edit Profile Screen"/>
-  <img src="./screenshoot/Screenshot_20191011-140611.png" width="180" height="350" alt="My Webtoon Screen"/>
-  <img src="./screenshoot/Screenshot_20191011-142608.png" width="180" height="350" alt="Create Episode Screen"/>
-  <img src="./screenshoot/Screenshot_20191011-140618.png" width="180" height="350" alt="Create Webtoon Screen"/>
-  <img src="./screenshoot/Screenshot_20191011-140955.png" width="180" height="350" alt="Edit Webtoon Screen"/>
-  <img src="./screenshoot/Screenshot_20191011-140625.png" width="180" height="350" alt="Edit Episode Screen"/>
+  <img src="./src/asset/screenshoot/Screenshot_20191011-123047.png" width="180" height="350" alt="Login Screen"/>
+  <img src="./src/asset/screenshoot/Screenshot_20191011-123105.png" width="180" height="350" alt="Home Screen"/>
+  <img src="./src/asset/screenshoot/Screenshot_20191011-140509.png" width="180" height="350" alt="Detail Screen"/>
+  <img src="./src/asset/screenshoot/Screenshot_20191011-140516.png" width="180" height="350" alt="Episode Detail Screen"/>
+  <img src="./src/asset/screenshoot/Screenshot_20191011-123113.png" width="180" height="350" alt="Favorite Screen"/>
+  <img src="./src/asset/screenshoot/Screenshot_20191011-123120.png" width="180" height="350" alt="Profile Screen"/>
+  <img src="./src/asset/screenshoot/Screenshot_20191011-140601.png" width="180" height="350" alt="Edit Profile Screen"/>
+  <img src="./src/asset/screenshoot/Screenshot_20191011-140611.png" width="180" height="350" alt="My Webtoon Screen"/>
+  <img src="./src/asset/screenshoot/Screenshot_20191011-142608.png" width="180" height="350" alt="Create Episode Screen"/>
+  <img src="./src/asset/screenshoot/Screenshot_20191011-140618.png" width="180" height="350" alt="Create Webtoon Screen"/>
+  <img src="./src/asset/screenshoot/Screenshot_20191011-140955.png" width="180" height="350" alt="Edit Webtoon Screen"/>
+  <img src="./src/asset/screenshoot/Screenshot_20191011-140625.png" width="180" height="350" alt="Edit Episode Screen"/>
     
 </p>
 
