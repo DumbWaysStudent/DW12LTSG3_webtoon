@@ -19,6 +19,8 @@ app.group('/api/v1',(router)=>{
     //Webtoon
     router.get('/webtoons',
     WebtoonController.index)
+    router.get('/webtoons/:id/episode',
+    WebtoonController.show)
 
 })
 
