@@ -28,3 +28,30 @@ exports.login = (req, res)=>{
 
     
 }
+exports.register = (req, res) => {
+    const name = req.body.name
+    const email = req.body.email
+    const password = req.body.password
+
+    User.findOrCreate({
+        where: {email},
+        defaults: {
+            email: email,
+            password: password,
+            name: name,
+            createdAt: new Date(),
+            updateAt: new Date()
+        }
+    })
+    .then(function(user){
+        res.send({
+            msg: `Account has created, you can login now`,
+            user
+        })
+    })
+    .catch((err)=>{
+        res.send({
+            msg: "Email has be used"
+        })
+    })
+}

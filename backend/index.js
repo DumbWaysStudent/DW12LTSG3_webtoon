@@ -12,10 +12,10 @@ app.group('/api/v1',(router)=>{
     //User
     router.post('/login',
     AuthController.login)
+    router.post('/register',
+    AuthController.register)
 
-    //Webtoon
-    router.get('/webtoons',
-    WebtoonControllers.index)
+    
 
 })
 
