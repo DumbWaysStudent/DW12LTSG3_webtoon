@@ -215,3 +215,44 @@ exports.DeleteByWebtoons = (req, res) => {
         })
     })
 }
+
+//Create Episode By Webtoon
+exports.storeEpisode = (req, res) => {
+    const webtoon_id = req.params.webtoonid
+    const body = req.body
+    Episode.create({
+        title: body.title,
+        cover: body.cover,
+        webtoon_id,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    })
+    .then(function(result){
+        res.send(result)
+    })
+    .catch(function(err){
+        res.send({
+            error: true,
+            message: "Can't Create Webtoon",
+            err
+        })
+    })
+}
+
+//Get All Images for Create My Screen Webtoon
+exports.showByDetail = (req, res) => {
+    const episode_id = req.params.episodeid
+    Detail.findAll({
+        where: {episode_id}
+    })
+    .then(function(result){
+        res.send(result)
+    })
+    .catch(function(err){
+        res.send({
+            error: true,
+            message: "Can't Find This Detail",
+            err
+        })
+    })
+}
