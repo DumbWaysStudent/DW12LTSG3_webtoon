@@ -1,5 +1,6 @@
 const Webtoon = require('../models').webtoon
 const Users = require('../models').user
+const Episode = require('../models').episode
 
 exports.index = (req, res) => {
     Webtoon.findAll({
@@ -17,12 +18,8 @@ exports.index = (req, res) => {
 }
 exports.show = (req, res) => {
     const id = req.params.id
-    Webtoon.findOne({
-        where:{id},
-        include:[{
-            model:Users,
-            as:"createdBy"
-        }]
+    Episode.findAll({
+        where:{webtoon_id:id}
     })
     .then(function(result){
         res.send(result)
