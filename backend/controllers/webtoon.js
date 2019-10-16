@@ -5,38 +5,21 @@ const Detail = require('../models').detail
 
 //Method Get /webtoons && /webtoons?favorite=true
 exports.index = (req, res) => {
-    const favorite = req.query.is_favorite
-    const isFavorite = favorite == 'true' ? 1:0
-    if(favorite){
-        Webtoon.findAll({
-            where:{isFavorite}
+    Webtoon.findAll({
+        include: [{
+            model:Users,
+            as:"createdBy"
+        }]
+    })
+    .then(function(result){
+        res.send(result)
+    })
+    .catch(function(err){
+        res.send({
+            message: "Error",
+            err
         })
-        .then(function(result){
-            res.send(result)
-        })
-        .catch(function(err){
-            res.send({
-                message: "Error Cannot Find",
-                err
-            })
-        })
-    }else{
-        Webtoon.findAll({
-            include: [{
-                model:Users,
-                as:"createdBy"
-            }]
-        })
-        .then(function(result){
-            res.send(result)
-        })
-        .catch(function(err){
-            res.send({
-                message: "Error",
-                err
-            })
-        })
-    }
+    })
 }
 exports.show = (req, res) => {
     const webtoon_id = req.params.id
@@ -71,4 +54,22 @@ exports.showByEpisode = (req, res) => {
             err
         })
     })
+}
+exports.showFavoriteSearch = (req, res) =>{
+    const favorite = req.query.is_favorite
+    const isFavorite = favorite == 'true' ? 1:0
+    if(favorite){
+        Webtoon.findAll({
+            where:{isFavorite}
+        })
+        .then(function(result){
+            res.send(result)
+        })
+        .catch(function(err){
+            res.send({
+                message: "Error Cannot Find",
+                err
+            })
+        })
+    }
 }
