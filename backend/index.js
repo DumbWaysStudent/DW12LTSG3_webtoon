@@ -47,6 +47,12 @@ app.group('/api/v1',(router)=>{
     authenticated,
     WebtoonController.UpdateByWebtoons)
 
+    //Delete Webtoon By Users 
+    router.delete('/user/:userid/webtoon/:webtoonid',
+    authenticated,
+    WebtoonController.DeleteByWebtoons)
+
+    
 })
 
 app.listen(port, ()=>console.log(`SERVER RUN IN ${port}`))

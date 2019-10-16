@@ -169,7 +169,6 @@ exports.showEpisodeById = (req, res) => {
 }
 
 exports.UpdateByWebtoons = (req, res) => {
-    const user_id = req.params.userid
     const id = req.params.webtoonid
     const body = req.body
     Webtoon.update({
@@ -179,15 +178,39 @@ exports.UpdateByWebtoons = (req, res) => {
         updatedAt: new Date()
     },
     {
-        where: {id,user_id}
+        where: {id}
     })
     .then(function(result){
-        res.send(result)
+        res.send({
+            ...body,
+            result
+        })
     })
     .catch(function(err){
         res.send({
             error: true,
             message: "Error can't update",
+            err
+        })
+    })
+}
+
+//Delete Webtoon By Users
+exports.DeleteByWebtoons = (req, res) => {
+    const id = req.params.webtoonid
+    Webtoon.destroy({
+        where: {id}
+    })
+    .then(function(result){
+        res.send({
+            id,
+            msg: `Webtoons Id ${id} has deleted`
+        })
+    })
+    .catch(function(err){
+        res.send({
+            error: true,
+            message: "Can't deleted webtoon",
             err
         })
     })
