@@ -38,6 +38,7 @@ app.group('/api/v1',(router)=>{
     authenticated,
     WebtoonController.store)
 
+    //Get All Episode For Webtoon
     router.get('/user/:userid/webtoon/:webtoonid/episodes',
     authenticated,
     WebtoonController.showEpisodeById)
@@ -57,9 +58,15 @@ app.group('/api/v1',(router)=>{
     authenticated,
     WebtoonController.storeEpisode)
 
+    //Get All Images For Episode
     router.get('/user/:userid/webtoon/:webtoonid/episode/:episodeid/images',
     authenticated,
     WebtoonController.showByDetail)
+
+    //Update Episode By Webtoon id
+    router.put('/user/:userid/webtoon/:webtoonid/episode/:episodeid',
+    authenticated,
+    WebtoonController.updateByEpisode)
 })
 
 app.listen(port, ()=>console.log(`SERVER RUN IN ${port}`))

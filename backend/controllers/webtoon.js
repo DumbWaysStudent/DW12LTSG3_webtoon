@@ -256,3 +256,30 @@ exports.showByDetail = (req, res) => {
         })
     })
 }
+
+//Update Episode by Id
+exports.updateByEpisode = (req, res) => {
+    const id = req.params.episodeid
+    const body = req.body
+    Episode.update({
+        title: body.title,
+        cover: body.cover,
+        updatedAt: new Date()
+    },
+    {
+        where : {id}
+    })
+    .then(function(result){
+        res.send({
+            ...body,
+            result
+        })
+    })
+    .catch(function(err){
+        res.send({
+            error: true,
+            message : "can't update episode",
+            err
+        })
+    })
+}
