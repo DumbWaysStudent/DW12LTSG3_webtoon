@@ -6,6 +6,7 @@ const app = express()
 const port = 4000
 
 const AuthController = require('./controllers/auth')
+const WebtoonController = require('./controllers/webtoon')
 
 app.use(bodyParser.json())
 app.group('/api/v1',(router)=>{
@@ -15,7 +16,9 @@ app.group('/api/v1',(router)=>{
     router.post('/register',
     AuthController.register)
 
-    
+    //Webtoon
+    router.get('/webtoons',
+    WebtoonController.index)
 
 })
 
