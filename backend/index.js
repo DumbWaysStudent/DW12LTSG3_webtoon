@@ -7,6 +7,7 @@ const port = 4000
 
 const AuthController = require('./controllers/auth')
 const WebtoonController = require('./controllers/webtoon')
+const { authenticated } = require('./middleware')
 
 app.use(bodyParser.json())
 app.group('/api/v1',(router)=>{
@@ -17,13 +18,13 @@ app.group('/api/v1',(router)=>{
     AuthController.register)
 
     //Webtoon
-    router.get('/webtoon',
+    router.get('/webtoons',
+    authenticated,
     WebtoonController.index)
     router.get('/webtoon/:idwebtoon/',
     WebtoonController.show)
     router.get('/webtoon/:idwebtoon/episode/:idepisode',
     WebtoonController.showByEpisode)
-
 })
 
 app.listen(port, ()=>console.log(`SERVER RUN IN ${port}`))
