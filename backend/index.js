@@ -38,9 +38,15 @@ app.group('/api/v1',(router)=>{
     authenticated,
     WebtoonController.store)
 
-    router.get('/user/:userid/webtoons/:webtoonid/episodes',
+    router.get('/user/:userid/webtoon/:webtoonid/episodes',
     authenticated,
     WebtoonController.showEpisodeById)
+
+    //Update Webtoon By Users
+    router.put('/user/:userid/webtoon/:webtoonid',
+    authenticated,
+    WebtoonController.UpdateByWebtoons)
+
 })
 
 app.listen(port, ()=>console.log(`SERVER RUN IN ${port}`))

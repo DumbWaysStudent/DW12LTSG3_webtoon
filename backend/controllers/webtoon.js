@@ -167,3 +167,28 @@ exports.showEpisodeById = (req, res) => {
         })
     })
 }
+
+exports.UpdateByWebtoons = (req, res) => {
+    const user_id = req.params.userid
+    const id = req.params.webtoonid
+    const body = req.body
+    Webtoon.update({
+        title: body.title,
+        genre: body.genre,
+        cover: body.cover,
+        updatedAt: new Date()
+    },
+    {
+        where: {id,user_id}
+    })
+    .then(function(result){
+        res.send(result)
+    })
+    .catch(function(err){
+        res.send({
+            error: true,
+            message: "Error can't update",
+            err
+        })
+    })
+}
