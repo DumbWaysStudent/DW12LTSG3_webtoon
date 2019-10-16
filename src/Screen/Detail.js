@@ -19,12 +19,7 @@ const data = [{
     url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90'
 }]
 
-const Options = {
-    title: '',
-    message: '',
-    url: '',
-    subject: ''
-}
+
 
 export default class DetailScreen extends React.Component{
     render(){
@@ -38,7 +33,7 @@ export default class DetailScreen extends React.Component{
                         </Button>
                     </Left>
                     <Body>
-                        <Title style={{color: 'black'}}>{state.params.title}</Title>
+                        <Title style={{color: 'black'}}>{state.params.data['title']}</Title>
                     </Body>
                     <Right>
                         <Button transparent onPress={()=> this.ShareFunc()}>
@@ -47,7 +42,7 @@ export default class DetailScreen extends React.Component{
                     </Right>
                     </Header>
                     <Image 
-                        source={{uri: state.params.url}}
+                        source={{uri: state.params.data['cover']}}
                         style={style.imageDetail}
                     />
                     <Container style={style.ContainerFlatList}>
@@ -73,7 +68,11 @@ export default class DetailScreen extends React.Component{
         )
     }
     ShareFunc(){
-        Share.share(Options);
+        Share.share({
+            title: this.props.navigation.getParam('title'),
+            message: "Ayo Kunjungi Clone Webtoon",
+            
+        });
     }
 }
 

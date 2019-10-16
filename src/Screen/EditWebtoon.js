@@ -81,7 +81,6 @@ export default class CreateWebtoonScreen extends React.Component{
                 </Button>
                 <Button
                 style={style.button}
-                style={{paddingLeft:20}}
                 full 
                 danger>
                     <Text style={{paddingLeft: 0}}>Delete Webtoon</Text>
@@ -127,6 +126,6 @@ const style = StyleSheet.create({
     button: {
         marginLeft: 20,
         marginRight: 20,
-        marginBottom: 20
+        marginBottom: 20,
     }
 })

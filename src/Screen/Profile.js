@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Image} from 'react-native'
 import {Container, Text, Header, Left, Body, Right, Button, Icon, View} from 'native-base';
-
+import AsyncStorage from '@react-native-community/async-storage'
 export default class ProfileScreen extends React.Component {
     constructor(){
       super();
@@ -49,7 +49,7 @@ export default class ProfileScreen extends React.Component {
               </Right>
           </Button>
           <Button
-          onPress={()=> this.props.navigation.navigate('Auth')}
+          onPress={()=> this.Logout()}
           warning
           full
           style={style.button}>
@@ -60,6 +60,10 @@ export default class ProfileScreen extends React.Component {
         </Container>
       );
     }
+    Logout = async () => {
+      await AsyncStorage.clear();
+      this.props.navigation.navigate('Auth');
+    };
   }
 
 const style = StyleSheet.create({

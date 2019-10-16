@@ -36,8 +36,8 @@ export default class CreateEpisode extends React.Component{
                         <Title style={{color: 'black'}}>Edit Episode</Title>
                     </Body>
                     <Right>
-                    <Button transparent
-                    onPress={()=> this.EditEpisode()}>
+                        <Button transparent
+                        onPress={()=> this.EditEpisode()}>
                             <Icon style={{color: 'orange'}} name='check' type='FontAwesome'/>
                         </Button>
                     </Right>
