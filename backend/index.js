@@ -27,6 +27,11 @@ app.group('/api/v1',(router)=>{
     router.get('/webtoon',
     authenticated,
     WebtoonController.showFavoriteSearch)
+
+    //Webtoon By Users
+    router.get('/user/:id/webtoons',
+    authenticated,
+    WebtoonController.showByUsers)
 })
 
 app.listen(port, ()=>console.log(`SERVER RUN IN ${port}`))

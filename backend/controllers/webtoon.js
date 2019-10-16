@@ -94,3 +94,12 @@ exports.showFavoriteSearch = (req, res) =>{
         })
     }
 }
+exports.showByUsers = (req, res) => {
+    const user_id = req.params.id
+    Webtoon.findAll({
+        where: {user_id}
+    })
+    .then(function(result){
+        res.send(result)
+    })
+}
