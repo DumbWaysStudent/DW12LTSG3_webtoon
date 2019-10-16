@@ -304,3 +304,25 @@ exports.DeleteEpisode = (req, res) => {
         })
     })
 }
+
+//Create Image Detail
+exports.storeDetail = (req, res) => {
+    const episode_id = req.params.episodeid
+    const body = req.body
+    Detail.create({
+        page: body.page,
+        image: body.image,
+        episode_id
+    })
+    .then({
+        message: `Image ${page} has Created`,
+        result
+    })
+    .catch(function(err){
+        res.send({
+            error: true,
+            message: "Can't Create Image",
+            err
+        })
+    })
+}
