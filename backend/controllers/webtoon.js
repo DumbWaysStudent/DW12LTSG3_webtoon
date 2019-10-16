@@ -20,7 +20,11 @@ exports.index = (req, res) => {
 exports.show = (req, res) => {
     const webtoon_id = req.params.id
     Episode.findAll({
-        where:{webtoon_id}
+        where:{webtoon_id},
+        include:[{
+            model:Webtoon,
+            as:"Webtoon"
+        }]
     })
     .then(function(result){
         res.send(result)
