@@ -33,10 +33,14 @@ app.group('/api/v1',(router)=>{
     authenticated,
     WebtoonController.showByUsers)
 
-    //Create By Users
+    //Create Webtoon By Users
     router.post('/user/:id/webtoons',
     authenticated,
     WebtoonController.store)
+
+    router.get('/user/:userid/webtoons/:webtoonid/episodes',
+    authenticated,
+    WebtoonController.showEpisodeById)
 })
 
 app.listen(port, ()=>console.log(`SERVER RUN IN ${port}`))

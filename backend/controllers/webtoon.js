@@ -36,6 +36,7 @@ exports.index = (req, res) => {
         })
         .catch(function(err){
             res.send({
+                error: true,
                 message: "Error",
                 err
             })
@@ -58,6 +59,7 @@ exports.show = (req, res) => {
     })
     .catch(function(err){
         res.send({
+            error: true,
             message: "Error Cannot Find",
             err
         })
@@ -75,6 +77,7 @@ exports.showByEpisode = (req, res) => {
     })
     .catch(function(err){
         res.send({
+            error: true,
             message: "Error Cannot Find",
             err
         })
@@ -94,6 +97,7 @@ exports.showFavoriteSearch = (req, res) =>{
         })
         .catch(function(err){
             res.send({
+                error: true,
                 message: "Error Cannot Find",
                 err
             })
@@ -109,6 +113,13 @@ exports.showByUsers = (req, res) => {
     })
     .then(function(result){
         res.send(result)
+    })
+    .catch(function(err){
+        res.send({
+            error: true,
+            message: "Error Cannot Find",
+            err
+        })
     })
 }
 
@@ -132,7 +143,26 @@ exports.store = (req, res) => {
     })
     .catch(function(err){
         res.send({
+            error: true,
             message: "Error",
+            err
+        })
+    })
+}
+
+//Get All Episode By Webtoon Id For Screen Create My Webtoon
+exports.showEpisodeById = (req, res) => {
+    const webtoon_id = req.params.webtoonid
+    Episode.findAll({
+        where: {webtoon_id}
+    })
+    .then(function(result){
+        res.send(result)
+    })
+    .catch(function(err){
+        res.send({
+            error: true,
+            message: "Error Can't Find",
             err
         })
     })
