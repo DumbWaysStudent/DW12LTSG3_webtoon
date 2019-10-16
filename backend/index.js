@@ -17,10 +17,12 @@ app.group('/api/v1',(router)=>{
     AuthController.register)
 
     //Webtoon
-    router.get('/webtoons',
+    router.get('/webtoon',
     WebtoonController.index)
-    router.get('/webtoons/:id/episode',
+    router.get('/webtoon/:idwebtoon/',
     WebtoonController.show)
+    router.get('/webtoon/:idwebtoon/episode/:idepisode',
+    WebtoonController.showByEpisode)
 
 })
 
