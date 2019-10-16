@@ -326,3 +326,24 @@ exports.storeDetail = (req, res) => {
         })
     })
 }
+
+//Delete Image Detail
+exports.deleteImage = (req, res) => {
+    const id = req.params.imagesid
+    Detail.destroy({
+        where: {id}
+    })
+    .then(function(result){
+        res.send({
+            message: `Image ${id} has been deleted`,
+            result
+        })
+    })
+    .catch(function(err){
+        res.send({
+            error: true,
+            message: "Can't delete image",
+            err
+        })
+    })
+}

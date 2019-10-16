@@ -73,9 +73,15 @@ app.group('/api/v1',(router)=>{
     authenticated,
     WebtoonController.DeleteEpisode)
 
-    //Create Image Episdoe 
+    //Create Image Episode
     router.post('/user/:userid/webtoon/:webtoonid/episode/:episodeid/images',
+    authenticated,
     WebtoonController.storeDetail)
+
+    //Delete Image Episode
+    router.delete('/user/:userid/webtoon/:webtoonid/episode/:episodeid/images/:imagesid',
+    authenticated,
+    WebtoonController.deleteImage)
 })
 
 app.listen(port, ()=>console.log(`SERVER RUN IN ${port}`))
