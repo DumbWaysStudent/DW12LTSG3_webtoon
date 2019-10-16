@@ -283,3 +283,24 @@ exports.updateByEpisode = (req, res) => {
         })
     })
 }
+
+//Delete Episode
+exports.DeleteEpisode = (req, res) => {
+    const id = req.params.episodeid
+    Episode.destroy({
+        where: {id}
+    })
+    .then(function(result){
+        res.send({
+            message: `Episode ${id} Has been deleted`,
+            result
+        })
+    })
+    .catch(function(err){
+        res.send({
+            error: true,
+            message: "Can't Update",
+            err
+        })
+    })
+}
