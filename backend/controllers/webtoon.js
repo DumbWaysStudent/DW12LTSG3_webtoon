@@ -2,24 +2,45 @@ const Webtoon = require('../models').webtoon
 const Users = require('../models').user
 const Episode = require('../models').episode
 const Detail = require('../models').detail
+const Op = require('sequelize').Op
+
 
 //Method Get /webtoons && /webtoons?favorite=true
 exports.index = (req, res) => {
-    Webtoon.findAll({
-        include: [{
-            model:Users,
-            as:"createdBy"
-        }]
-    })
-    .then(function(result){
-        res.send(result)
-    })
-    .catch(function(err){
-        res.send({
-            message: "Error",
-            err
+    const title = req.query.title
+    if(title){
+        Webtoon.findAll({
+            where:{
+                title: { [Op.like]: `%${title}%` }
+            },
+            include:[{
+                model:Users,
+                as:"createdBy"
+            }]
         })
-    })
+        .then(function(result){
+            res.send(result)
+        })
+        .catch(function(err){
+            res.send(result)
+        })
+    }else{
+        Webtoon.findAll({
+            include: [{
+                model:Users,
+                as:"createdBy"
+            }]
+        })
+        .then(function(result){
+            res.send(result)
+        })
+        .catch(function(err){
+            res.send({
+                message: "Error",
+                err
+            })
+        })
+    }
 }
 exports.show = (req, res) => {
     const webtoon_id = req.params.id
