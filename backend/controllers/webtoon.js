@@ -5,7 +5,7 @@ const Detail = require('../models').detail
 const Op = require('sequelize').Op
 
 
-//Method Get /webtoons && /webtoons?favorite=true
+//Method Get /webtoons && /webtoons?title
 exports.index = (req, res) => {
     const title = req.query.title
     if(title){
@@ -42,6 +42,8 @@ exports.index = (req, res) => {
         })
     }
 }
+
+//Get All Episode By Webtoon Id
 exports.show = (req, res) => {
     const webtoon_id = req.params.id
     Episode.findAll({
@@ -61,6 +63,8 @@ exports.show = (req, res) => {
         })
     })
 }
+
+//Get All Image Episode By Episode Id
 exports.showByEpisode = (req, res) => {
     const episode_id = req.params.idepisode
     Detail.findAll({
@@ -76,6 +80,8 @@ exports.showByEpisode = (req, res) => {
         })
     })
 }
+
+//Get All Favorite By Favorite Is True
 exports.showFavoriteSearch = (req, res) =>{
     const favorite = req.query.is_favorite
     const isFavorite = favorite == 'true' ? 1:0
@@ -94,6 +100,8 @@ exports.showFavoriteSearch = (req, res) =>{
         })
     }
 }
+
+//Get All Webtoon By Users Id
 exports.showByUsers = (req, res) => {
     const user_id = req.params.id
     Webtoon.findAll({
@@ -101,5 +109,31 @@ exports.showByUsers = (req, res) => {
     })
     .then(function(result){
         res.send(result)
+    })
+}
+
+//Store /Create Webtoons By Users Id
+exports.store = (req, res) => {
+    const user_id = req.params.id
+    const body = req.body
+    Webtoon.create({
+        title: body.title,
+        genre: body.genre,
+        cover: body.cover,
+        isFavorite: false,
+        user_id,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    })
+    .then(function(result){
+        res.send({
+            message: "Your Account Has Created"
+        })
+    })
+    .catch(function(err){
+        res.send({
+            message: "Error",
+            err
+        })
     })
 }
